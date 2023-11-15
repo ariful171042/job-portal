@@ -2,7 +2,7 @@ import { FiMapPin, FiSearch } from "react-icons/fi";
 
 const Banner = ({ query, handleInputChange }) => {
   return (
-    <div className="max-w-screen-2xl container mx-auto xl:px-24 px-4 md:py-20 py-14">
+    <div className="max-w-screen-2xl container mx-auto xl:px-0 px-4 md:py-20 py-14">
       <h1 className="text-5xl font-bold text-primary mb-3">
         Find your <span className="text-blue">new job today</span>
       </h1>

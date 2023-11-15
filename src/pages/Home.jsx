@@ -3,13 +3,14 @@ import Banner from "../components/ui/Banner";
 import Card from "../components/common/Card";
 import Jobs from "./Jobs";
 import Sidebar from "./sidebar/Sidebar";
+import NewsLatter from "../components/ui/NewsLatter";
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [jobs, setJobs] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemPerPage = 6;
+  const itemPerPage = 5;
 
   useEffect(() => {
     setLoading(true);
@@ -135,7 +136,9 @@ const Home = () => {
         </div>
 
         {/* Right Side  */}
-        <div className="bg-white p-4 rounded">Right</div>
+        <div className="bg-white p-4 rounded ">
+          <NewsLatter />
+        </div>
       </div>
     </div>
   );
