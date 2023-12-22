@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import CreateableSlect from "react-select/creatable";
 
 const JobPost = () => {
@@ -7,12 +8,25 @@ const JobPost = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
     data.skills = selectedOption;
-    console.log(data);
+    fetch("http://localhost:5000/post-job", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        if (result.acknowledged === true) {
+          toast.success("Post Added");
+        }
+        reset();
+      });
   };
 
   const options = [
@@ -82,7 +96,7 @@ const JobPost = () => {
               </select>
             </div>
             <div className="lg:w-1/2 w-full">
-              <label className="block mb-2 text-lg">Salary Type</label>
+              <label className="block mb-2 text-lg">Location</label>
               <input
                 type="text"
                 placeholder="EX: New York"
